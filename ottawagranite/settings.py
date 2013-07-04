@@ -2,7 +2,9 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-import dj_database_url
+import dj_database_url, os
+
+projdir = os.path.abspath(os.path.dirname(__file__))
 
 ADMINS = (
     ('Michael Soulier', 'msoulier@digitaltorque.ca'),
@@ -63,9 +65,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(projdir, "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -102,9 +102,7 @@ ROOT_URLCONF = 'ottawagranite.urls'
 WSGI_APPLICATION = 'ottawagranite.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(projdir, "templates")
 )
 
 INSTALLED_APPS = (
@@ -114,10 +112,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging

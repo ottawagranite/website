@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <title>The Granite Curling Club of West Ottawa</title>
+        <link type="text/css"
+              rel="stylesheet"
+              href="{% static 'bootstrap/css/bootstrap.css' %}"
+              />
+        <link type="text/css"
+              rel="stylesheet"
+              href="{% static 'jquery-ui/css/ui-lightness/jquery-ui-1.10.3.custom.css' %}"
+              />
+        <link type="text/css"
+              rel="stylesheet"
+              href="{% static 'css/site.css' %}"
+              />
+
+        <script type="text/javascript"
+                src="{% static 'jquery-ui/js/jquery-1.9.1.js' %}"
+                ></script>
+        <script type="text/javascript"
+                src="{% static 'jquery-ui/js/jquery-ui-1.10.3.custom.js' %}"
+                ></script>
+        <script type="text/javascript"
+                src="{% static 'bootstrap/js/bootstrap.js' %}"
+                ></script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+            <div class="container" style="width: auto;">
+                <a href = "/" class="brand" style="padding-left: 100px">The Granite Curling Club of West Ottawa</a>
+                <ul class="nav" role="navigation">
+
+                <!-- Club info menu -->
+                <li class="dropdown">
+                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Club Information <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about/">About the club</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/aboutsite/">About the website</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Contact Us</a></li>
+                    </ul>
+
+                </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="width: auto;">
+            {% block content %}
+            Placeholder
+            {% endblock %}
+        </div>
+    </body>
+</html>
