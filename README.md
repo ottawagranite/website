@@ -8,4 +8,4 @@ The project uses:
 
 Temporarily hosted during development on Heroku at
 
-    http://thawing-inlet-5759.herokuapp.com/
+http://thawing-inlet-5759.herokuapp.com/
