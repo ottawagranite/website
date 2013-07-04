@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+import dj_database_url
 
 ADMINS = (
     ('Michael Soulier', 'msoulier@digitaltorque.ca'),
