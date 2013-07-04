@@ -50,9 +50,17 @@
             </div>
         </div>
         <div class="container" style="width: auto;">
-            {% block content %}
-            Placeholder
-            {% endblock %}
+            <div class="span1">
+                &nbsp;
+            </div>
+            <div class="span10" id="content_div">
+                {% block content %}
+                Placeholder
+                {% endblock %}
+            </div>
+            <div class="span1" id="right_messagebox">
+                Some really cool stuff going on in the club.
+            </div>
         </div>
     </body>
 </html>

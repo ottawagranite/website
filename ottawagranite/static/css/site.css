@@ -1,7 +1,32 @@
-/* mitel blue is #00447C */
+/* Granite colors:
+ * Gold Yellow: PANTONE 1235C
+ * #FDBB30 (R-253 G-187 B-48 or C-0 M-29 Y-92 K-0)
+ *
+ * Forest Green : PANTONE 567C
+ * #004F39 (R-0 G-79 B-57 or C-90 M-42 Y-80 K-43)
+ */
 
 body {
     padding-top: 60px;
+    background: #004F39;
+}
+
+#content_div {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.3);
+    border: 2px groove threedface;
+}
+
+#right_messagebox {
+    background: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.3);
+    border: 2px groove threedface;
 }
 
 .right-justify {
