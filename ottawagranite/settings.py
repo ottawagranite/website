@@ -147,3 +147,8 @@ LOGGING = {
         },
     }
 }
+
+# User Account Settings
+ADDRESS_TYPE_CHOICES = []
+EMAIL_ADDRESS_TYPE_CHOICES = []
+PHONE_NUMBER_TYPE_CHOICES = []
