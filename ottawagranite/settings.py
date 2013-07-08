@@ -1,10 +1,11 @@
 # Django settings for ottawagranite project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url, os
 
 projdir = os.path.abspath(os.path.dirname(__file__))
+PROJDIR = projdir
 
 ADMINS = (
     ('Michael Soulier', 'msoulier@digitaltorque.ca'),
@@ -19,7 +20,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost', 'http://thawing-inlet-5759.herokuapp.com/']
+ALLOWED_HOSTS = ['localhost', 'thawing-inlet-5759.herokuapp.com']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -57,7 +58,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.abspath(os.path.join(projdir, "../static"))
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -114,6 +115,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'gunicorn'
 )
 
 # A sample logging configuration. The only tangible logging
