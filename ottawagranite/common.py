@@ -27,6 +27,14 @@ def main_menu():
                     "href": "/leagues/general/"
                 },
                 {
+                    "title": "Looking for curlers",
+                    "href": "/leagues/looking/"
+                },
+                {
+                    "title": "divider",
+                    "href": ""
+                },
+                {
                     "title": "Day Ladies",
                     "href": "/leagues/dayladies/"
                 },
@@ -39,6 +47,10 @@ def main_menu():
                     "href": "/leagues/daymixed/"
                 },
                 {
+                    "title": "divider",
+                    "href": ""
+                },
+                {
                     "title": "Evening Ladies",
                     "href": "/leagues/eveningladies/"
                 },
@@ -47,8 +59,16 @@ def main_menu():
                     "href": "/leagues/eveningmen/"
                 },
                 {
+                    "title": "divider",
+                    "href": ""
+                },
+                {
                     "title": "Weekend Mixed",
                     "href": "/leagues/weekendmixed/"
+                },
+                {
+                    "title": "Sunday Open",
+                    "href": "/leagues/sundayopen/"
                 },
                 {
                     "title": "Monday Open Fixed",
@@ -59,8 +79,8 @@ def main_menu():
                     "href": "/leagues/wednesdayopen/"
                 },
                 {
-                    "title": "Sunday Open",
-                    "href": "/leagues/sundayopen/"
+                    "title": "divider",
+                    "href": ""
                 },
                 {
                     "title": "Little Rocks",
@@ -73,6 +93,56 @@ def main_menu():
                 {
                     "title": "Rookies Rock",
                     "href": "/leagues/rookiesrock/"
+                }
+            ]
+        },
+        {
+            "title": "Membership",
+            "submenus": [
+                {
+                    "title": "New member information",
+                    "href": "/membership/new_member_info/"
+                },
+                {
+                    "title": "Membership fees",
+                    "href": "/membership/membership_fees/"
+                },
+                {
+                    "title": "Member registration",
+                    "href": "/membership/member_registration/"
+                },
+                {
+                    "title": "divider",
+                    "href": ""
+                },
+                {
+                    "title": "Social activities",
+                    "href": "/membership/social_activities/"
+                },
+                {
+                    "title": "Curling information",
+                    "href": "/membership/curling_information/"
+                },
+                {
+                    "title": "Newsletter archives",
+                    "href": "/membership/newsletter_archives/"
+                },
+                {
+                    "title": "Subscribing to League Newsletters",
+                    "href": "/membership/league_newsletters/"
+                }
+            ]
+        },
+        {
+            "title": "Calendars",
+            "submenus": [
+                {
+                    "title": "Events calendar",
+                    "href": "#"
+                },
+                {
+                    "title": "Ice allocation calendar",
+                    "href": "#"
                 }
             ]
         }

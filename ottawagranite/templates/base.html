@@ -36,14 +36,22 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
             <div class="container">
-                <a href = "/" class="brand">The Granite Curling Club of West Ottawa</a>
+                <ul class="nav" role="navigation">
+                    <li>
+                        <a href="/" style="padding:0; margin:0;"><img src="{% static 'img/GraniteLogo_tiny.png' %}" /></a>
+                    </li>
+                </ul>
                 {% for menu in top_menus %}
                 <ul class="nav" role="navigation">
                 <li class="dropdown">
                     <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{ menu.title }} <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                     {% for submenu in menu.submenus %}
+                        {% if submenu.title = "divider" %}
+                    <li class="divider"></li>
+                        {% else %}
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ submenu.href }}">{{ submenu.title }}</a></li>
+                        {% endif %}
                     {% endfor %}
                     </ul>
                 </li>
@@ -55,7 +63,7 @@
                 <!-- This ul we pull right for the login widget -->
                 <ul class="nav pull-right">
                 <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Login</a>
+                    <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Member login</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                         <li role="presentation">
                             <form id="login_form">
@@ -117,10 +125,13 @@
                     </div>
                 </div>
             </div> <!-- row -->
-            <footer>
+        </div> <!-- container-fluid -->
+
+        <!-- footer -->
+        <div class="container-fluid">
+            <div class="row-fluid">
                 &copy; The Granite Curling Club of West Ottawa 2013
-                <img src="{% static 'img/GraniteLogo_tiny.png' %}" />
-            </footer>
-        </div>
+            </div>
+        </div> <!-- container-fluid -->
     </body>
 </html>
