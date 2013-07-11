@@ -1,4 +1,7 @@
 from django.shortcuts import render_to_response
+from ottawagranite import common
 
 def home(request):
-    return render_to_response('index.html')
+    menus = common.main_menu()
+    return render_to_response('index.html',
+        { "top_menus": menus })

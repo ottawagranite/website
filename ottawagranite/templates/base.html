@@ -37,44 +37,20 @@
             <div class="navbar-inner">
             <div class="container">
                 <a href = "/" class="brand">The Granite Curling Club of West Ottawa</a>
-                <!-- Club info menu -->
+                {% for menu in top_menus %}
                 <ul class="nav" role="navigation">
                 <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Club Information <b class="caret"></b></a>
-
+                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{ menu.title }} <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about/">About the club</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/aboutsite/">About the website</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Contact Us</a></li>
+                    {% for submenu in menu.submenus %}
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ submenu.href }}">{{ submenu.title }}</a></li>
+                    {% endfor %}
                     </ul>
-
                 </li>
                 </ul>
+                {% endfor %}
 
-                <!-- Club league menu -->
-                <ul class="nav" role="navigation">
-                <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">League information <b class="caret"></b></a>
 
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about/">General information</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/aboutsite/">Day Ladies</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Day Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Day Mixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Ladies</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Weekend Mixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Monday Open Fixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Wednesday Open</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Sunday Open</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Little Rocks</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Bantam / Juniors</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Rookies Rock</a></li>
-                    </ul>
-
-                </li>
-                </ul>
 
                 <!-- This ul we pull right for the login widget -->
                 <ul class="nav pull-right">
