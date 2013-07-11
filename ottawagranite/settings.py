@@ -1,6 +1,6 @@
 # Django settings for ottawagranite project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url, os
 
