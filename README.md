@@ -9,3 +9,10 @@ The project uses:
 Temporarily hosted during development on Heroku at
 
 http://thawing-inlet-5759.herokuapp.com/
+
+The principles of the new site should be
+
+* Simple, intuitive layout
+* A minimum of clicks to reach anything
+* Consistency throughout in look and feel
+* Data-driven wherever possible instead of "hand editing" pages
