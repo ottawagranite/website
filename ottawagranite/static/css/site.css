@@ -7,7 +7,7 @@
  */
 
 html {
-    background: #004F39;
+    /* background: #004F39; */
     height: 98%;
 }
 
@@ -16,9 +16,9 @@ body {
     padding-top: 60px;
     margin-left: auto;
     margin-right: auto;
-    width: 98%;
+    /* width: 98%;
+    height: 98%; */
     background: white;
-    height: 98%;
     -moz-box-sizing: border-box;
     padding: 1em;
     border-radius: 1em;
@@ -30,6 +30,13 @@ body {
     border-radius: 1em;
     border: 2px groove threedface;
     box-shadow: 0 2px 0 rgba(0,0,0,.3);
+}
+
+.newsbox,
+.datebox {
+    background: whitesmoke;
+    margin-top: 1em;
+    width: 90%;
 }
 
 .right-justify {
