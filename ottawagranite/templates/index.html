@@ -2,26 +2,31 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>Lorem Ipsum.</h1>
+<h1><span class="subtext">The</span> Granite Curling Club <span class="subtext">of West Ottawa</span></h1>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras posuere
-    viverra risus, non venenatis dolor commodo sed. Nam ultricies, justo quis
-    elementum laoreet, risus odio scelerisque eros, vitae vehicula turpis leo
-    at felis. Donec varius augue at porttitor congue. Vivamus consectetur
-    tellus eget pretium euismod. Duis ullamcorper nulla ac felis aliquam
-    faucibus. Quisque a lacinia est. Duis elit nisi, semper pharetra
-    pellentesque sed, hendrerit ut nibh.
+    Established in 1954 in the modern district of Westboro, the "Granite" is
+    the center for the sport
+    of <a href="http://en.wikipedia.org/wiki/Curling">Curling</a> in West
+    Ottawa.
+</p>
+<img src="{% static 'img/curling.png' %}" style="float: right;" />
+<p>
+    We are always welcoming new members. Please see our <a
+    href="/gettingstarted/">getting started</a> resources if you want to learn
+    to curl for the first time, or just to come out and visit the club for the
+    first time. We have an excellent <a href="/leagues/rookies/">rookies</a>
+    program for adults, a <a href="/leagues/littlerocks/">little rocks</a>
+    program for kids, and a <a href="/leagues/bantams">bantams</a> program for
+    teens.
 </p>
 <p>
-    Ut a ante convallis, congue magna ac, varius leo. Maecenas varius dolor
-    ligula, eget iaculis magna lobortis id. Aenean cursus ipsum sem. Phasellus
-    id risus velit. Maecenas quis sapien at dui bibendum molestie. Nam lacus
-    sapien, vestibulum ut dapibus in, mollis nec urna. Praesent dictum nibh sed
-    leo ornare, at ultricies lacus pharetra. Nunc eleifend id lectus ac
-    volutpat.  Proin consequat nisl sit amet lectus mollis, porttitor dapibus
-    erat porttitor.  Morbi ultrices laoreet ipsum at dictum. Aliquam sed leo ac
-    urna porta tincidunt sed cursus purus. Etiam ac aliquam sapien. Nam mattis
-    mauris lacinia est suscipit, non ullamcorper justo suscipit. 
+    For current members, please see the
+    <a href="/membersonly/">members only</a> area to manage your information,
+    view schedules, download
+    calendars, etc.
+</p>
+<p>
+    Thank you for visiting.
 </p>
 {% endblock %}
 
