@@ -9,6 +9,12 @@ admin.autodiscover()
 projdir = settings.PROJDIR
 
 urlpatterns = patterns('',
+    url(r'leagues/$',
+        'ottawagranite.views.leagues_landing_page',
+        name='leagues-landing-page'),
+    url(r'membership/life_members/$',
+        'ottawagranite.views.life_members',
+        name='life-members'),
     url(r'info/about/$', 'ottawagranite.views.about', name="about"),
     url(r'^$', 'ottawagranite.views.home', name='home'),
     # url(r'^ottawagranite/', include('ottawagranite.foo.urls')),

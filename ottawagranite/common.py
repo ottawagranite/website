@@ -57,6 +57,10 @@ def main_menu():
                 {
                     "title": "Subscribing to League Newsletters",
                     "href": "/membership/league_newsletters/"
+                },
+                {
+                    "title": "Honourary Life Members",
+                    "href": "/membership/life_members/"
                 }
             ]
         },
