@@ -98,32 +98,15 @@
                         </li>
                     </ul>
                 </li>
-            </div>
-        </div>
+            </div> <!-- container -->
+            </div> <!-- navbar-inner -->
+        </div> <!-- navbar -->
 
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span9">
-                    {% block content %}
-                    Placeholder
-                    {% endblock %}
-                </div>
-                <div class="span3" style="margin-top: 10px;">
-                    <div class="container-fluid row-fluid rounded newsbox">
-                        <h2>Club News</h2>
-                        <p>
-                            Some really cool stuff going on in the club.  Too
-                            bad I can't get a nav-list working. 
-                        </p>
-                    </div>
-                    <div class="container-fluid row-fluid rounded datebox">
-                        <h2>Important Dates</h2>
-                        <ul>
-                            <li>Date one</li>
-                            <li>Date two</li>
-                        </ul>
-                    </div>
-                </div>
+                {% block content %}
+                Placeholder
+                {% endblock %}
             </div> <!-- row -->
         </div> <!-- container-fluid -->
 
