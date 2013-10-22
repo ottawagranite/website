@@ -1,6 +1,10 @@
 *.pyc
 *.swp
 
+*.sqlite
+
+ottawagranite/local_settings.py
+
 # Eclipse
 .project
 .pydevproject

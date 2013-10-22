@@ -1,4 +1,5 @@
 # Django settings for ottawagranite project.
+# Local settings override at end of file
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -115,7 +116,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'gunicorn'
+    'gunicorn',
+    'south',
+    'curling',
+    'finance',
+    'membership',
+    'ottawagranite',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -146,3 +152,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except:
+    pass
