@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from curling.models import League
 from membership.models import Member
@@ -19,7 +20,7 @@ class OttawaGraniteMember(Member):
     honorary = models.BooleanField(_('honorary'), default=False)
     student = models.BooleanField(_('student'), default=False)
 
-    instrucotr = models.CharField(max_length=500)
+    instructor = models.CharField(_('instructor'), max_length=500)
 
     class Meta:
         verbose_name = _('member')
@@ -27,4 +28,4 @@ class OttawaGraniteMember(Member):
 
 
 class OttawaGraniteLeague(League):
-    rating = models.CharField(_('rating'), maximum_length=20, blank=True)
+    rating = models.CharField(_('rating'), max_length=20, blank=True)

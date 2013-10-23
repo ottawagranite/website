@@ -1,8 +1,8 @@
 from curling.league_format import league_formats
 
 PLAYER_GENDER_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female'),
+    ('Male', 'Male'),
+    ('Female', 'Female'),
 )
 
 LEAGUE_FORMAT_CHOICES = [(x, x) for x in league_formats.keys()]

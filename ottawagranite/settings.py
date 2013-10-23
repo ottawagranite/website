@@ -16,6 +16,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = { 'default': dj_database_url.config() }
+SOUTH_DATABASE_ADAPTERS = {'default':'south.db.postgresql_psycopg2'} # http://stackoverflow.com/a/15286449/460877
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
