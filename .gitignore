@@ -8,3 +8,4 @@ ottawagranite/local_settings.py
 # Eclipse
 .project
 .pydevproject
+.settings
