@@ -1,4 +1,5 @@
 # Django settings for ottawagranite project.
+# Local settings override at end of file
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -15,6 +16,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = { 'default': dj_database_url.config() }
+SOUTH_DATABASE_ADAPTERS = {'default':'south.db.postgresql_psycopg2'} # http://stackoverflow.com/a/15286449/460877
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -115,7 +117,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'gunicorn'
+    'gunicorn',
+    'south',
+    'curling',
+    'finance',
+    'membership',
+    'ottawagranite',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -146,3 +153,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except:
+    pass

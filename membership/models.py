@@ -1,11 +1,12 @@
-from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from membership import choices
+
 
 class AbstractPhoneNumber(models.Model):
-    type = models.CharField(_('type'), help_text=_('The type of phone number'), choices=settings.PHONE_NUMBER_TYPE_CHOICES)
-    number = models.TextField(_('number'), help_text=_('The phone number'), max_length=100)
+    type = models.CharField(_('type'), max_length=50, help_text=_('The type of phone number'), choices=choices.PHONE_NUMBER_TYPE_CHOICES)
+    number = models.CharField(_('number'), max_length=200, help_text=_('The phone number'))
 
     def __unicode__(self):
         return u'%s %s' % (self.type, self.number)
@@ -17,8 +18,8 @@ class AbstractPhoneNumber(models.Model):
 
 
 class AbstractEmailAddress(models.Model):
-    type = models.CharField(_('type'), help_text=_('The type of email address'), choices=settings.EMAIL_ADDRESS_TYPE_CHOICES)
-    address = models.EmailField(_('address'), help_text=_('The email address'))
+    type = models.CharField(_('type'), max_length=200, help_text=_('The type of email address'), choices=choices.EMAIL_ADDRESS_TYPE_CHOICES)
+    address = models.EmailField(_('address'), max_length=200, help_text=_('The email address'))
 
     def __unicode__(self):
         return u'%s %s' % (self.type, self.address)
@@ -30,12 +31,12 @@ class AbstractEmailAddress(models.Model):
 
 
 class AbstractAddress(models.Model):
-    type = models.CharField(_('type'), help_text=_('The type of address'), choices=settings.ADDRESS_TYPE_CHOICES)
-    street = models.CharField(_('street'))
-    city = models.CharField(_('city'), help_text=_('City or Town'))
-    province = models.CharField(_('province'), help_text=_('Province or State'))
-    country = models.CharField(_('country'), default='Canada')
-    postal_code = models.CharField(_('postal code'), help_text=_('Format: A1A 1A1'))
+    type = models.CharField(_('type'), max_length=50, help_text=_('The type of address'), choices=choices.ADDRESS_TYPE_CHOICES)
+    street = models.CharField(_('street'), max_length=200)
+    city = models.CharField(_('city'), max_length=200, help_text=_('City or Town'))
+    province = models.CharField(_('province'), max_length=200, help_text=_('Province or State'))
+    country = models.CharField(_('country'), max_length=200, default='Canada')
+    postal_code = models.CharField(_('postal code'), max_length=7, help_text=_('Format: A1A 1A1'))
 
     def __unicode__(self):
         return u'%s %s %s' % (self.type, self.street, self.city)
@@ -48,12 +49,12 @@ class AbstractAddress(models.Model):
 
 ########################################
 class Member(models.Model):
-    salutation = models.CharField(_('salutation'), max_length=100, choices=settings.SALUTATION_CHOICES)
+    salutation = models.CharField(_('salutation'), max_length=100, choices=choices.SALUTATION_CHOICES, blank=True)
     first_name = models.CharField(_('first name'), max_length=100)
     last_name = models.CharField(_('last name'), max_length=100)
-    gender = models.CharField(_('gender'), max_length=100, choices=settings.GENDER_CHOICES)
+    gender = models.CharField(_('gender'), max_length=100, choices=choices.GENDER_CHOICES, blank=True)
 
-    date_of_birth = models.DateField(_('date of birth'))
+    date_of_birth = models.DateField(_('date of birth'), blank=True)
     comments = models.TextField(_('comments'), blank=True)
 
     def __unicode__(self):
@@ -66,7 +67,7 @@ class Member(models.Model):
 
 class Address(AbstractAddress):
     publish = models.BooleanField(_('publish'), default=False)
-    member = models.ForeignKey(Member, verbose_name=_(''), related_name='address')
+    member = models.ForeignKey(Member, verbose_name=_('member'), related_name='address')
 
     class Meta:
         verbose_name = _('address')
@@ -75,7 +76,7 @@ class Address(AbstractAddress):
 
 class EmailAddress(AbstractEmailAddress):
     publish = models.BooleanField(_('publish'), default=False)
-    member = models.ForeignKey(Member, verbose_name=_(''), related_name='email')
+    member = models.ForeignKey(Member, verbose_name=_('member'), related_name='email')
 
     class Meta:
         verbose_name = _('email address')
@@ -84,7 +85,7 @@ class EmailAddress(AbstractEmailAddress):
 
 class PhoneNumber(AbstractPhoneNumber):
     publish = models.BooleanField(_('publish'), default=False)
-    member = models.ForeignKey(Member, verbose_name=_(''), related_name='phone_number')
+    member = models.ForeignKey(Member, verbose_name=_('member'), related_name='phone_number')
 
     class Meta:
         verbose_name = _('phone number')
@@ -97,7 +98,6 @@ class EmergencyContact(models.Model):
     relationship = models.TextField(_('relationship'))
 
     class Meta:
-        abstract = True
         verbose_name = _('emergency contact')
         verbose_name_plural = _('emergency contacts')
 
@@ -136,9 +136,9 @@ class MembershipType(models.Model):
 
 
 class Membership(models.Model):
-    member = models.ForeignKey(Member)
-    type = models.ForeignKey(MembershipType)
-    season = models.ForeignKey(Season)
+    member = models.ForeignKey(Member, verbose_name=_('member'))
+    type = models.ForeignKey(MembershipType, verbose_name=_('type'))
+    season = models.ForeignKey(Season, verbose_name=_('season'))
 
     def __unicode__(self):
         return u'%s %s %s' % (self.member, self.type, self.season)
