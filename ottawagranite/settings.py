@@ -149,6 +149,9 @@ LOGGING = {
 }
 
 # User Account Settings
-ADDRESS_TYPE_CHOICES = []
-EMAIL_ADDRESS_TYPE_CHOICES = []
-PHONE_NUMBER_TYPE_CHOICES = []
+ADDRESS_TYPE_CHOICES = [('Home','Home'),('Work','Work'),('Other','Other')]
+EMAIL_ADDRESS_TYPE_CHOICES = [('Home','Home'),('Work','Work'),('Other','Other')]
+PHONE_NUMBER_TYPE_CHOICES = [('Home','Home'),("Mobile','Mobile')('Work','Work'),('Other','Other')]
+SALUTATION_CHOICES = [('Mr.','Mr.'),('Mrs.','Mrs.'),('Ms.','Ms.'),('Dr.','Dr.'),('','')]
+GENDER_CHOICES = [('Male','Male'),('Female','Female')]
+    
