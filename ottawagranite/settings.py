@@ -14,7 +14,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES = {
+    'default': dj_database_url.config(
+        default="sqlite:///%s" % os.path.join(projdir, "database.sqlite")
+        )
+    }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -115,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'membership',
     'gunicorn'
 )
 
