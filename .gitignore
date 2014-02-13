@@ -1,4 +1,17 @@
+# Python
 *.pyc
 *.swp
+
+# Eclipse
+.pydevproject
+.project
+.settings
+
+# Mac
 .DS_Store
+
+# Database
 *.sqlite
+
+# Settings Override
+ottawagranite/local_settings.py
