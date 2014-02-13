@@ -25,5 +25,5 @@ urlpatterns = patterns('',
     # Serve static content
     url(r'^static/(?P<path>.*)',
          'django.views.static.serve',
-         { 'document_root': os.path.abspath(os.path.join(projdir, 'static')) })
+         { 'document_root': settings.STATIC_ROOT })
 )
