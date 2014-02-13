@@ -59,7 +59,8 @@ class Migration(SchemaMigration):
         # Adding model 'EmergencyContact'
         db.create_table(u'membership_emergencycontact', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('member', self.gf('django.db.models.fields.related.ForeignKey')(related_name='emergency_contact', to=orm['membership.Member'])),
+            ('member', self.gf('django.db.models.fields.related.ForeignKey')
+             (related_name='emergency_contact', to=orm['membership.Member'])),
             ('name', self.gf('django.db.models.fields.TextField')()),
             ('relationship', self.gf('django.db.models.fields.TextField')()),
         ))
@@ -70,7 +71,8 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('type', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('number', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('emergency_contact', self.gf('django.db.models.fields.related.ForeignKey')(related_name='phone_number', to=orm['membership.EmergencyContact'])),
+            ('emergency_contact', self.gf('django.db.models.fields.related.ForeignKey')
+             (related_name='phone_number', to=orm['membership.EmergencyContact'])),
         ))
         db.send_create_signal(u'membership', ['EmergencyContactPhoneNumber'])
 
@@ -99,7 +101,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'membership', ['Membership'])
 
-
     def backwards(self, orm):
         # Deleting model 'Member'
         db.delete_table(u'membership_member')
@@ -127,7 +128,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Membership'
         db.delete_table(u'membership_membership')
-
 
     models = {
         u'membership.address': {

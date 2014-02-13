@@ -92,8 +92,10 @@ class Migration(SchemaMigration):
             ('sheet', self.gf('django.db.models.fields.related.ForeignKey')(related_name='game', to=orm['curling.Sheet'])),
             ('team_a', self.gf('django.db.models.fields.related.ForeignKey')(related_name='game_a_team', to=orm['curling.Team'])),
             ('team_b', self.gf('django.db.models.fields.related.ForeignKey')(related_name='game_b_team', to=orm['curling.Team'])),
-            ('team_a_colour', self.gf('django.db.models.fields.related.ForeignKey')(related_name='game_a_colour', to=orm['curling.Colour'])),
-            ('team_b_colour', self.gf('django.db.models.fields.related.ForeignKey')(related_name='game_b_colour', to=orm['curling.Colour'])),
+            ('team_a_colour', self.gf('django.db.models.fields.related.ForeignKey')
+             (related_name='game_a_colour', to=orm['curling.Colour'])),
+            ('team_b_colour', self.gf('django.db.models.fields.related.ForeignKey')
+             (related_name='game_b_colour', to=orm['curling.Colour'])),
             ('start_time', self.gf('django.db.models.fields.DateTimeField')()),
             ('finish_time', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
         ))
@@ -121,7 +123,6 @@ class Migration(SchemaMigration):
             ('finish_time', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
         ))
         db.send_create_signal(u'curling', ['Throw'])
-
 
     def backwards(self, orm):
         # Deleting model 'Player'
@@ -159,7 +160,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Throw'
         db.delete_table(u'curling_throw')
-
 
     models = {
         u'auth.group': {

@@ -52,7 +52,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'finance', ['Payment'])
 
-
     def backwards(self, orm):
         # Deleting model 'FeeType'
         db.delete_table(u'finance_feetype')
@@ -62,7 +61,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'Payment'
         db.delete_table(u'finance_payment')
-
 
     models = {
         u'auth.group': {

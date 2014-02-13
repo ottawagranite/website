@@ -68,15 +68,18 @@ class Sheet(models.Model):
     def __unicode__(self):
         return u'%s: %s' % (self.club, self.name)
 
-    def generate_rocks(self, colours=[], numbers=[1,2,3,4,5,6,7,8]):
+    def generate_rocks(self, colours=[], numbers=[1, 2, 3, 4, 5, 6, 7, 8]):
         for c in colours:
             for n in numbers:
                 Rock.objects.get_or_create(sheet=self, colour=c, number=n)
 
 # Rocks
+
+
 class Colour(models.Model):
     name = models.CharField(_('name'), max_length=100)
-    hex = models.CharField(_('hex code'), max_length=6, validators=[RegexValidator('^[0-9a-fA-F]{6}$', 'Not a valid hex code', 'Invalid Code')])
+    hex = models.CharField(_('hex code'), max_length=6,
+                           validators=[RegexValidator('^[0-9a-fA-F]{6}$', 'Not a valid hex code', 'Invalid Code')])
 
     def __unicode__(self):
         return u'%s: %s' % (self.name, self.hex)

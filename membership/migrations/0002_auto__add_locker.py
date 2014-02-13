@@ -20,11 +20,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'membership', ['Locker'])
 
-
     def backwards(self, orm):
         # Deleting model 'Locker'
         db.delete_table(u'membership_locker')
-
 
     models = {
         u'membership.address': {

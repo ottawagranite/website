@@ -3,7 +3,8 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-import dj_database_url, os
+import dj_database_url
+import os
 
 projdir = os.path.abspath(os.path.dirname(__file__))
 PROJDIR = projdir
@@ -15,8 +16,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = { 'default': dj_database_url.config() }
-SOUTH_DATABASE_ADAPTERS = {'default':'south.db.postgresql_psycopg2'} # http://stackoverflow.com/a/15286449/460877
+DATABASES = {'default': dj_database_url.config()}
+SOUTH_DATABASE_ADAPTERS = {'default': 'south.db.postgresql_psycopg2'}  # http://stackoverflow.com/a/15286449/460877
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -76,7 +77,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -86,7 +87,7 @@ SECRET_KEY = 'woedg-p-%e&5pg_i^8#=m%^tjwc89vvr&ka8$q++gq7*isb6u%'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (

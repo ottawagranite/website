@@ -14,4 +14,4 @@ POSITION_CHOICES = (
     ('Skip', 'Skip'),
     ('Alternate', 'Alternate'),
     ('Coach', 'Coach'),
-    )
+)

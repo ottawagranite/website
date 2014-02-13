@@ -12,7 +12,8 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding model 'OttawaGraniteMember'
         db.create_table(u'ottawagranite_ottawagranitemember', (
-            (u'member_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['membership.Member'], unique=True, primary_key=True)),
+            (u'member_ptr', self.gf('django.db.models.fields.related.OneToOneField')
+             (to=orm['membership.Member'], unique=True, primary_key=True)),
             ('membership_number', self.gf('django.db.models.fields.IntegerField')()),
             ('latest_membership', self.gf('django.db.models.fields.IntegerField')()),
             ('earliest_membership', self.gf('django.db.models.fields.IntegerField')()),
@@ -29,11 +30,11 @@ class Migration(SchemaMigration):
 
         # Adding model 'OttawaGraniteLeague'
         db.create_table(u'ottawagranite_ottawagraniteleague', (
-            (u'league_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['curling.League'], unique=True, primary_key=True)),
+            (u'league_ptr', self.gf('django.db.models.fields.related.OneToOneField')
+             (to=orm['curling.League'], unique=True, primary_key=True)),
             ('rating', self.gf('django.db.models.fields.CharField')(max_length=20, blank=True)),
         ))
         db.send_create_signal(u'ottawagranite', ['OttawaGraniteLeague'])
-
 
     def backwards(self, orm):
         # Deleting model 'OttawaGraniteMember'
@@ -41,7 +42,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'OttawaGraniteLeague'
         db.delete_table(u'ottawagranite_ottawagraniteleague')
-
 
     models = {
         u'curling.league': {
