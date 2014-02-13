@@ -1,6 +1,14 @@
+# Python
 *.pyc
 *.swp
 
 # Eclipse
 .pydevproject
 .project
+
+# Mac
+.DS_Store
+
+# Database
+*.sqlite
+

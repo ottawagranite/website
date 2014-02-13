@@ -36,50 +36,34 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
             <div class="container">
-                <a href = "/" class="brand">The Granite Curling Club of West Ottawa</a>
-                <!-- Club info menu -->
+                <ul class="nav" role="navigation">
+                    <li>
+                        <a href="/" style="padding:0; margin:0;"><img src="{% static 'img/GraniteLogo_tiny.png' %}" /></a>
+                    </li>
+                </ul>
+                {% for menu in top_menus %}
                 <ul class="nav" role="navigation">
                 <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Club Information <b class="caret"></b></a>
-
+                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">{{ menu.title }} <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about/">About the club</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/aboutsite/">About the website</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Contact Us</a></li>
+                    {% for submenu in menu.submenus %}
+                        {% if submenu.title = "divider" %}
+                    <li class="divider"></li>
+                        {% else %}
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ submenu.href }}">{{ submenu.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
                     </ul>
-
                 </li>
                 </ul>
+                {% endfor %}
 
-                <!-- Club league menu -->
-                <ul class="nav" role="navigation">
-                <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">League information <b class="caret"></b></a>
 
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/about/">General information</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/aboutsite/">Day Ladies</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Day Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Day Mixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Ladies</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Evening Men</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Weekend Mixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Monday Open Fixed</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Wednesday Open</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Sunday Open</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Little Rocks</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Bantam / Juniors</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/contactus/">Rookies Rock</a></li>
-                    </ul>
-
-                </li>
-                </ul>
 
                 <!-- This ul we pull right for the login widget -->
                 <ul class="nav pull-right">
                 <li class="dropdown">
-                    <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Login</a>
+                    <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Member login</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                         <li role="presentation">
                             <form id="login_form">
@@ -114,36 +98,23 @@
                         </li>
                     </ul>
                 </li>
-            </div>
-        </div>
+            </div> <!-- container -->
+            </div> <!-- navbar-inner -->
+        </div> <!-- navbar -->
 
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span9">
-                    {% block content %}
-                    Placeholder
-                    {% endblock %}
-                </div>
-                <div class="span3" style="margin-top: 10px;">
-                    <div class="container-fluid row-fluid rounded">
-                        <h2>Club News</h2>
-                        <p>
-                            Some really cool stuff going on in the club.  Too
-                            bad I can't get a nav-list working. 
-                        </p>
-                    </div>
-                    <div class="container-fluid row-fluid rounded">
-                        <h2>Important Dates</h2>
-                        <ul>
-                            <li>Date one</li>
-                            <li>Date two</li>
-                        </ul>
-                    </div>
-                </div>
+                {% block content %}
+                Placeholder
+                {% endblock %}
             </div> <!-- row -->
-            <footer>
+        </div> <!-- container-fluid -->
+
+        <!-- footer -->
+        <div class="container-fluid">
+            <div class="row-fluid">
                 &copy; The Granite Curling Club of West Ottawa 2013
-            </footer>
-        </div>
+            </div>
+        </div> <!-- container-fluid -->
     </body>
 </html>

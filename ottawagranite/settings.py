@@ -1,6 +1,6 @@
 # Django settings for ottawagranite project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url, os
 
@@ -14,7 +14,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = { 'default': dj_database_url.config() }
+DATABASES = {
+    'default': dj_database_url.config(
+        default="sqlite:///%s" % os.path.join(projdir, "database.sqlite")
+        )
+    }
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -116,7 +120,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'gunicorn',
-    'users'
+    'users',
+    'membership',
 )
 
 # A sample logging configuration. The only tangible logging
