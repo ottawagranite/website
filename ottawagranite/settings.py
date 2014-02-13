@@ -1,4 +1,5 @@
 # Django settings for ottawagranite project.
+# Local settings override at end of file
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,11 +15,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default="sqlite:///%s" % os.path.join(projdir, "database.sqlite")
-        )
-    }
+DATABASES = { 'default': dj_database_url.config() }
+SOUTH_DATABASE_ADAPTERS = {'default':'south.db.postgresql_psycopg2'} # http://stackoverflow.com/a/15286449/460877
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -120,8 +118,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'gunicorn',
-    'users',
+    'south',
+    'curling',
+    'finance',
     'membership',
+    'ottawagranite',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -153,10 +154,7 @@ LOGGING = {
     }
 }
 
-# User Account Settings
-ADDRESS_TYPE_CHOICES = [('Home','Home'),('Work','Work'),('Other','Other')]
-EMAIL_ADDRESS_TYPE_CHOICES = [('Home','Home'),('Work','Work'),('Other','Other')]
-PHONE_NUMBER_TYPE_CHOICES = [('Home','Home'),("Mobile','Mobile')('Work','Work'),('Other','Other')]
-SALUTATION_CHOICES = [('Mr.','Mr.'),('Mrs.','Mrs.'),('Ms.','Ms.'),('Dr.','Dr.'),('','')]
-GENDER_CHOICES = [('Male','Male'),('Female','Female')]
-    
+try:
+    from local_settings import *
+except:
+    pass
