@@ -1,11 +1,16 @@
 from django.shortcuts import render_to_response
 from ottawagranite import common
+from membership.models import League
 
 def leagues_landing_page(request):
     """Display the leagues landing page."""
     menus = common.main_menu()
+    leagues = League.objects.all()
     return render_to_response('leagues.html',
-        { "top_menus": menus })
+        {
+            "top_menus": menus,
+            "leagues": leagues
+        })
 
 def life_members(request):
     menus = common.main_menu()
