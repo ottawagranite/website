@@ -1,0 +1,6 @@
+PHONE_NUMBER_TYPE_CHOICES = [(x, x) for x in ('Home', 'Work', 'Mobile', 'Other')]
+EMAIL_ADDRESS_TYPE_CHOICES = [(x, x) for x in ('Home', 'Work', 'Other')]
+ADDRESS_TYPE_CHOICES = [(x, x) for x in ('Home', 'Work', 'Other')]
+SALUTATION_CHOICES = [(x, x) for x in ('Mr.', 'Ms.', 'Mrs.', 'Dr.', None)]
+GENDER_CHOICES = [(x, x) for x in ('Unspecified', 'Male', 'Female', 'Other')]
+LOCKER_TYPE_CHOICES = [(x, x) for x in ('Half', 'Full')]

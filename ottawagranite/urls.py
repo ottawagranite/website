@@ -17,13 +17,11 @@ urlpatterns = patterns('',
         name='life-members'),
     url(r'info/about/$', 'ottawagranite.views.about', name="about"),
     url(r'^$', 'ottawagranite.views.home', name='home'),
-    # url(r'^ottawagranite/', include('ottawagranite.foo.urls')),
 
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
     # Serve static content
     url(r'^static/(?P<path>.*)',
-         'django.views.static.serve',
-         { 'document_root': settings.STATIC_ROOT })
+        'django.views.static.serve',
+        { 'document_root': settings.STATIC_ROOT })
 )

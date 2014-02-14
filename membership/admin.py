@@ -1,23 +1,19 @@
 from django.contrib import admin
-from membership.models import Member, Position, Team, Division, League
+from membership.models import Member, Address, EmailAddress, PhoneNumber, \
+    EmergencyContact, EmergencyContactPhoneNumber, Season, Membership, Locker, \
+    MembershipType, Position, Team, Division, League
 
-class MemberAdmin(admin.ModelAdmin):
-    pass
-
-class PositionAdmin(admin.ModelAdmin):
-    pass
-
-class TeamAdmin(admin.ModelAdmin):
-    pass
-
-class DivisionAdmin(admin.ModelAdmin):
-    pass
-
-class LeagueAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Member, MemberAdmin)
-admin.site.register(Position, PositionAdmin)
-admin.site.register(Team, TeamAdmin)
-admin.site.register(Division, DivisionAdmin)
-admin.site.register(League, LeagueAdmin)
+admin.site.register(Member)
+admin.site.register(Address)
+admin.site.register(EmailAddress)
+admin.site.register(PhoneNumber)
+admin.site.register(EmergencyContact)
+admin.site.register(EmergencyContactPhoneNumber)
+admin.site.register(Season)
+admin.site.register(Membership)
+admin.site.register(MembershipType)
+admin.site.register(Locker)
+admin.site.register(Position)
+admin.site.register(Team)
+admin.site.register(Division)
+admin.site.register(League)
