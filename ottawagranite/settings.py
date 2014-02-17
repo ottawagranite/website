@@ -22,6 +22,14 @@ DATABASES = {
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# For Django-registration
+ACCOUNT_ACTIVATION_DAYS = 1
+REGISTRATION_OPEN = True
+
+# For email sending
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['localhost', 'thawing-inlet-5759.herokuapp.com']
@@ -120,7 +128,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'membership',
-    'gunicorn'
+    'gunicorn',
+    'registration'
 )
 
 # A sample logging configuration. The only tangible logging

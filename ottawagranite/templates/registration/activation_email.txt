@@ -1,0 +1,8 @@
+Someone, hopefully you, is attemtping to register your email account to a user
+account at {{ site }}. 
+
+<a href="http://localhost:8000{% url 'registration_activate' activation_key %}">Click here</a> to activate this account. You have {{ expiration_days }} days to do so.
+
+If you did not do this, you can safely ignore this email.
+
+Thank you.
