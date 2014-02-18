@@ -20,6 +20,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
+    # Django registration
+    url(r'^accounts/', include('registration.backends.default.urls')),
+
     # Serve static content
     url(r'^static/(?P<path>.*)',
         'django.views.static.serve',

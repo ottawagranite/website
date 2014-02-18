@@ -1,0 +1,12 @@
+Someone, hopefully you, is attempting to register your email account to a user
+account at {{ site }}. 
+
+Cut and paste the following url into your browser to activate your account.
+
+http://localhost:8000{% url 'registration_activate' activation_key %}
+
+You have {{ expiration_days }} day{{ expiration_days|pluralize }} to do so.
+
+If you did not do this, you can safely ignore this email.
+
+Thank you.
