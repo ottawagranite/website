@@ -32,6 +32,8 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'do-not-reply@digitaltorque.ca')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL',
+                                    'do-not-reply@digitaltorque.ca')
 EMAIL_USE_TLS = False
 if os.environ.has_key('EMAIL_USE_TLS') and os.environ['EMAIL_USE_TLS'] == 'yes':
     EMAIL_USE_TLS = True
