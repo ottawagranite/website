@@ -1,7 +1,11 @@
-Someone, hopefully you, is attemtping to register your email account to a user
+Someone, hopefully you, is attempting to register your email account to a user
 account at {{ site }}. 
 
-<a href="http://localhost:8000{% url 'registration_activate' activation_key %}">Click here</a> to activate this account. You have {{ expiration_days }} days to do so.
+Cut and paste the following url into your browser to activate your account.
+
+http://localhost:8000{% url 'registration_activate' activation_key %}
+
+You have {{ expiration_days }} day{{ expiration_days|pluralize }} to do so.
 
 If you did not do this, you can safely ignore this email.
 
