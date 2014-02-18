@@ -31,7 +31,11 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', '')
+SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'do-not-reply@digitaltorque.ca')
+EMAIL_USE_TLS = False
+if os.environ.has_key('EMAIL_USE_TLS') and os.environ['EMAIL_USE_TLS'] == 'yes':
+    EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
