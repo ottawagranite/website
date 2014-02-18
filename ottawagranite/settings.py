@@ -129,7 +129,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'membership',
     'gunicorn',
-    'registration'
+    'registration',
+    'django_extensions'
 )
 
 # A sample logging configuration. The only tangible logging
