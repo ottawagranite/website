@@ -1,9 +1,8 @@
 from django.contrib import admin
-from membership.models import ( Member, Address, EmailAddress, PhoneNumber,
+from membership.models import ( Address, EmailAddress, PhoneNumber,
                                 EmergencyContact, EmergencyContactPhoneNumber,
                                 Season, Membership, Locker, MembershipType )
 
-admin.site.register(Member)
 admin.site.register(Address)
 admin.site.register(EmailAddress)
 admin.site.register(PhoneNumber)

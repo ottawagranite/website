@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <create|drop|recreate>" 1>&2
+    exit 1
+fi
+
+create() {
+    sudo -u postgres psql -d template1 -U postgres -c "CREATE USER ottawagranite_user PASSWORD 'default';"
+
+    sudo -u postgres createdb ottawagranite --owner ottawagranite_user
+}
+
+drop() {
+    sudo -u postgres dropdb ottawagranite
+    sudo -u postgres dropuser ottawagranite_user
+}
+
+case $1 in
+    create)
+        create
+        ;;
+    drop)
+        drop
+        ;;
+    recreate)
+        drop
+        create
+        ;;
+    *)
+        echo "Unsupported option: $1" 1>&2
+        exit 1
+esac

@@ -18,9 +18,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///%s' % os.path.join(projdir, 'database.sqlite')
+        default='postgres://ottawagranite_user:default@localhost/ottawagranite'
         )
     }
+
+# The model to use for additional user data.
+AUTH_PROFILE_MODEL = 'membership.Member'
 
 SOUTH_DATABASE_ADAPTERS = {'default': 'south.db.postgresql_psycopg2'}  # http://stackoverflow.com/a/15286449/460877
 

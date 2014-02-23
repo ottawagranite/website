@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from membership import choices
+from django.contrib.auth.models import User
 
 class AbstractPhoneNumber(models.Model):
     type = models.CharField(_('type'), max_length=50, help_text=_('The type of phone number'), choices=choices.PHONE_NUMBER_TYPE_CHOICES)
@@ -44,16 +45,16 @@ class AbstractAddress(models.Model):
 
 ########################################
 class Member(models.Model):
+    user = models.OneToOneField(User)
+
     salutation = models.CharField(_('salutation'), max_length=100, choices=choices.SALUTATION_CHOICES, blank=True)
-    first_name = models.CharField(_('first name'), max_length=100)
-    last_name = models.CharField(_('last name'), max_length=100)
     gender = models.CharField(_('gender'), max_length=100, choices=choices.GENDER_CHOICES, blank=True)
 
     date_of_birth = models.DateField(_('date of birth'), blank=True)
     comments = models.TextField(_('comments'), blank=True)
 
     def __unicode__(self):
-        return u'%s %s' % (self.first_name, self.last_name)
+        return u'%s, %s' % (self.user.last_name, self.user.first_name)
 
     class Meta:
         verbose_name = _('member')
