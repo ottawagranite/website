@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ottawagranite">
     <head>
         <title>The Granite Curling Club of West Ottawa</title>
         <link type="text/css"
@@ -28,6 +28,12 @@
                 ></script>
         <script type="text/javascript"
                 src="{% static 'bootstrap/js/bootstrap.js' %}"
+                ></script>
+        <script type="text/javascript"
+                src="{% static 'js/lib/angular.min.js' %}"
+                ></script>
+        <script type="text/javascript"
+                src="{% static 'js/app.js' %}"
                 ></script>
         {% block head %}
         {% endblock %}
@@ -61,12 +67,13 @@
 
 
                 <!-- This ul we pull right for the login widget -->
-                <ul class="nav pull-right">
+                <ul class="nav pull-right" ng-controller="LoginController">
                 <li class="dropdown">
                     <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Member login</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                         <li role="presentation" style="width: 500px;">
-                            <form id="login_form">
+                            <form id="login_form"
+                                  ng-submit="performLogin('{% url 'login-login' %}')">
                                 <div class="container-fluid">
                                     <div class="row-fluid">
                                         <div class="span6">
@@ -75,6 +82,8 @@
                                         <div class="span6">
                                             <input id="login_userid"
                                                 type="text"
+                                                ng-model="userid"
+                                                required
                                                 />
                                         </div>
                                     </div>

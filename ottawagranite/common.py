@@ -1,6 +1,7 @@
 def main_menu():
     """This function returns a data structure used to render the top
     level menu."""
+    print "IN MAIN MENU"
     return [
         {
             "title": "Club information",
@@ -78,3 +79,7 @@ def main_menu():
             ]
         }
     ]
+
+def base_processor(request):
+    print "IN BASE PROCESSOR"
+    return dict(top_menus=main_menu())

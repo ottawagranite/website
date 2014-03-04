@@ -23,6 +23,9 @@ urlpatterns = patterns('',
     # Django registration
     url(r'^accounts/', include('registration.backends.default.urls')),
 
+    # Handle logins
+    url(r'^login/', include('login.urls')),
+
     # Serve static content
     url(r'^static/(?P<path>.*)',
         'django.views.static.serve',
