@@ -44,6 +44,51 @@ app.config(function($interpolateProvider) {
     $interpolateProvider.endSymbol('}]}');
 });
 
+app.factory('Session', function($http) {
+    return {
+        loggedIn: false,
+        name: null,
+        get: function(callback) {
+            $http.get('/sessions')
+                .success(function(data, status, headers, config) {
+                    console.log("GET to /sessions successful");
+                    console.log("data is " + data);
+                    this.loggedIn = true;
+                    callback(data);
+                })
+                .error(function(data, status, headers, config) {
+                    console.log("GET to /sessions unsuccessful");
+                    console.log("data is " + data);
+                });
+        },
+        login: function(userid, password, success, error) {
+            $http.post('/sessions', {userid: userid, password: password})
+                .success(function(data, status, headers, config) {
+                    console.log("POST to /sessions successful");
+                    console.log("data is " + data);
+                    this.name = userid;
+                    success(data);
+                })
+                .error(function(data, status, headers, config) {
+                    console.log("POST to /sessions failed");
+                    console.log("data is " + data);
+                    error(data);
+                });
+        },
+        logout: function(userid, success, error) {
+            $http.delete('/sessions/' + userid + '/')
+                .success(function(data, status, headers, config) {
+                    console.log("DELETE to /sessions successful");
+                    success(data);
+                })
+                .error(function(data, status, headers, config) {
+                    console.log("DELETE to /sessions unsuccessful");
+                    error(data);
+                });
+        }
+    }
+});
+
 app.controller('LoginController',
     function($scope, $http) {
         console.log("in LoginController");
