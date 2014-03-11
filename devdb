@@ -5,15 +5,31 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-create() {
-    sudo -u postgres psql -d template1 -U postgres -c "CREATE USER ottawagranite_user PASSWORD 'default';"
+if [ "x$OS" = "xDarwin" ]; then
+    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+else
+    # Make sure we're running as user postgres on Linux
+    if [ "x$userid" = "x" ]; then
+        echo "\$userid variable not set - quitting" 1>&2
+        exit 1
+    fi
+    if [ "$userid" != "postgres" ]; then
+        echo "Not the postgres user, re-executing"
+        sudo -u postgres $0 "$@"
+        exit 0
+    fi
+fi
 
-    sudo -u postgres createdb ottawagranite --owner ottawagranite_user
+create() {
+    #sudo -u postgres psql -d template1 -U postgres -c "CREATE USER ottawagranite_user PASSWORD 'default';"
+    createuser --pwprompt ottawagranite_user
+
+    createdb ottawagranite --owner ottawagranite_user
 }
 
 drop() {
-    sudo -u postgres dropdb ottawagranite
-    sudo -u postgres dropuser ottawagranite_user
+    dropdb ottawagranite
+    dropuser ottawagranite_user
 }
 
 case $1 in
