@@ -65,6 +65,27 @@
                 {% endfor %}
 
 
+                {% if user.is_authenticated %}
+
+                <form id="login_form">
+                    {% csrf_token %}
+                <ul class="nav pull-right"
+                    ng-controller="LoginController"
+                    ng-init="init()">
+                    <li class="dropdown">
+                        <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">My account</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)">Manage my information</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation" style="500px;">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="performLogout('{% url 'membersession-logout' %}')">Logout {{ user }}</a></li>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                </form>
+
+                {% else %}
 
                 <!-- This ul we pull right for the login widget -->
                 <ul class="nav pull-right"
@@ -76,6 +97,7 @@
                         <li role="presentation" style="width: 500px;">
                             <form id="login_form"
                                   ng-submit="performLogin('{% url 'membersession-login' %}')">
+                                {% csrf_token %}
                                 <div class="container-fluid">
                                     <div class="row-fluid">
                                         <div class="span6">
@@ -126,6 +148,7 @@
                             </form>
                         </li>
                     </ul>
+                    {% endif %} <!-- user.is_authenticated -->
                 </li>
             </div> <!-- container -->
             </div> <!-- navbar-inner -->

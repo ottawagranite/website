@@ -18,6 +18,16 @@ var spin_opts = {
 };
 var spinner = null;
 
+function get_csrf_token() {
+    var widgets = $('form input');
+    for (var i = 0; i < widgets.length; i++) {
+        if (widgets[i].name === "csrfmiddlewaretoken") {
+            return widgets[i].value;
+        }
+    }
+    return null;
+}
+
 // FIXME: make this generic
 function start_spinner() {
     var target = $('#progress_row')[0];
@@ -44,6 +54,11 @@ app.config(function($interpolateProvider) {
     $interpolateProvider.endSymbol('}]}');
 });
 
+// Add the CSRF token to all requests.
+app.run(function($http) {
+    $http.defaults.headers.common["X-CSRFToken"] = get_csrf_token();
+});
+
 app.controller('LoginController',
     function($scope, $http) {
         console.log("in LoginController");
@@ -52,16 +67,26 @@ app.controller('LoginController',
             console.log("In init");
         }
 
+        $scope.performLogout = function(url) {
+            $http.post(url)
+                .success(function(data, status, headers, config) {
+                    document.location.reload();
+                })
+                .error(function(data, status, headers, config) {
+                    alert("Error on logout - Report this to the site administrator");
+                });
+        }
+
         $scope.performLogin = function(url) {
             var data = {};
             data.userid = $scope.userid;
             data.password = $scope.password;
             $http.post(url, data)
                 .success(function(data, status, headers, config) {
-                    alert("Login successful!");
+                    document.location.reload();
                 })
                 .error(function(data, status, headers, config) {
-                    alert("Login failed!");
+                    alert("Bad username or password");
                 });
         };
     }

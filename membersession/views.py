@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 log = logging.getLogger(__name__)
 
-def login(request):
+def member_login(request):
     """Handle user logins."""
     log.info("in login")
     if request.method == 'POST':
@@ -34,6 +34,18 @@ def login(request):
         else:
             log.error("invalid login for user %s", user)
             return HttpResponse(status=403)
+
+    else:
+        log.error("Unsupported HTTP request method: %s", request.method)
+        return HttpResponse(status=400)
+
+def member_logout(request):
+    """Handle user logouts."""
+    log.info("in logout")
+    if request.method == 'POST':
+        log.debug("POST request")
+        logout(request)
+        return HttpResponse('OK')
 
     else:
         log.error("Unsupported HTTP request method: %s", request.method)
