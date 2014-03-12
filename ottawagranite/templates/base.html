@@ -67,13 +67,15 @@
 
 
                 <!-- This ul we pull right for the login widget -->
-                <ul class="nav pull-right" ng-controller="LoginController">
+                <ul class="nav pull-right"
+                    ng-controller="LoginController"
+                    ng-init="init()">
                 <li class="dropdown">
                     <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">Member login</a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                         <li role="presentation" style="width: 500px;">
                             <form id="login_form"
-                                  ng-submit="performLogin('{% url 'login-login' %}')">
+                                  ng-submit="performLogin('{% url 'membersession-login' %}')">
                                 <div class="container-fluid">
                                     <div class="row-fluid">
                                         <div class="span6">

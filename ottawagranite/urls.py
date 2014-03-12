@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('registration.backends.default.urls')),
 
     # Handle logins
-    url(r'^login/', include('login.urls')),
+    url(r'^membersession/', include('membersession.urls')),
 
     # Serve static content
     url(r'^static/(?P<path>.*)',

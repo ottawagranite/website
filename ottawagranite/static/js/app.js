@@ -48,8 +48,21 @@ app.controller('LoginController',
     function($scope, $http) {
         console.log("in LoginController");
 
+        $scope.init = function() {
+            console.log("In init");
+        }
+
         $scope.performLogin = function(url) {
-            alert("Here we should login at url " + url);
+            var data = {};
+            data.userid = $scope.userid;
+            data.password = $scope.password;
+            $http.post(url, data)
+                .success(function(data, status, headers, config) {
+                    alert("Login successful!");
+                })
+                .error(function(data, status, headers, config) {
+                    alert("Login failed!");
+                });
         };
     }
 );
