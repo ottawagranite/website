@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from curling.choices import PLAYER_GENDER_CHOICES, LEAGUE_FORMAT_CHOICES, \
     POSITION_CHOICES
 from curling.league_format import league_formats
-from curling.settings import REQUIRE_GENDER
+from django.conf import settings
 
 
 # Teams
@@ -30,7 +30,7 @@ class Player(models.Model):
             return 'Player %s' % self.pk
 
     def clean(self):
-        if REQUIRE_GENDER and not self.gender:
+        if settings.CURLING_REQUIRE_GENDER and not self.gender:
             raise ValidationError('A value for gender is required.')
 
 

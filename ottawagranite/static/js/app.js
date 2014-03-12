@@ -68,8 +68,10 @@ app.controller('LoginController',
         }
 
         $scope.performLogout = function(url) {
+            console.log("in Logout, url is " + url);
             $http.post(url)
                 .success(function(data, status, headers, config) {
+                    console.log("success, reloading");
                     document.location.reload();
                 })
                 .error(function(data, status, headers, config) {

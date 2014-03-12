@@ -92,6 +92,9 @@ STATIC_ROOT = os.path.abspath(os.path.join(projdir, "../static"))
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
+# For the curling app.
+CURLING_REQUIRE_GENDER = True
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(projdir, "static"),
