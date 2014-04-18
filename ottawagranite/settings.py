@@ -31,6 +31,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ACCOUNT_ACTIVATION_DAYS = 1
 REGISTRATION_OPEN = True
 
+# If not logged-in and redirect required, send the user to the home page.
+LOGIN_URL = '/'
+
 # For email sending
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'localhost')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 25)

@@ -3,8 +3,27 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 import logging, json
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from membersession.forms import MemberForm
 
 log = logging.getLogger(__name__)
+
+@login_required
+def manage_account(request):
+    """Manage your account settings."""
+    log.info("in membersession.views.manageaccount")
+    form = MemberForm()
+    if request.method == 'GET':
+        log.debug('GET request')
+
+    elif request.method == 'POST':
+        log.debug('POST request')
+
+    return render_to_response('account.html',
+        RequestContext(request,
+            {
+                'form': form
+            }))
 
 def member_login(request):
     """Handle user logins."""
