@@ -5,6 +5,10 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+id=$(id -u)
+userid=$(awk -F: '$3 == '"$id"'{print $1}' /etc/passwd)
+echo userid is $userid
+
 if [ "x$OS" = "xDarwin" ]; then
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
 else
@@ -21,9 +25,7 @@ else
 fi
 
 create() {
-    #sudo -u postgres psql -d template1 -U postgres -c "CREATE USER ottawagranite_user PASSWORD 'default';"
     createuser --pwprompt ottawagranite_user
-
     createdb ottawagranite --owner ottawagranite_user
 }
 

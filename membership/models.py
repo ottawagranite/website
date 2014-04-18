@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from membership import choices
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, UserManager
 
 class AbstractPhoneNumber(models.Model):
     type = models.CharField(_('type'), max_length=50, help_text=_('The type of phone number'), choices=choices.PHONE_NUMBER_TYPE_CHOICES)
@@ -44,17 +44,27 @@ class AbstractAddress(models.Model):
         verbose_name_plural = _('addresses')
 
 ########################################
-class Member(models.Model):
-    user = models.OneToOneField(User)
-
+class Member(AbstractUser):
+    objects = UserManager()
+    
     salutation = models.CharField(_('salutation'), max_length=100, choices=choices.SALUTATION_CHOICES, blank=True)
     gender = models.CharField(_('gender'), max_length=100, choices=choices.GENDER_CHOICES, blank=True)
 
-    date_of_birth = models.DateField(_('date of birth'), blank=True)
-    comments = models.TextField(_('comments'), blank=True)
+    date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
+    comments = models.TextField(_('comments'), blank=True, default='')
 
     def __unicode__(self):
-        return u'%s, %s' % (self.user.last_name, self.user.first_name)
+        return u'%s, %s' % (self.last_name, self.first_name)
+
+    def get_full_name(self):
+        name = self.first_name
+        if self.middle_initial:
+            name += " " + self.middle_initial
+        name += " " + self.last_name
+        return name
+
+    def get_short_name(self):
+        return self.first_name
 
     class Meta:
         verbose_name = _('member')
@@ -68,13 +78,13 @@ class Address(AbstractAddress):
         verbose_name = _('address')
         verbose_name_plural = _('addresses')
 
-class EmailAddress(AbstractEmailAddress):
+class AdditionalEmailAddress(AbstractEmailAddress):
     publish = models.BooleanField(_('publish'), default=False)
-    member = models.ForeignKey(Member, verbose_name=_('member'), related_name='email')
+    member = models.ForeignKey(Member, verbose_name=_('member'), related_name='additional_email')
 
     class Meta:
-        verbose_name = _('email address')
-        verbose_name_plural = _('email addresses')
+        verbose_name = _('additional email address')
+        verbose_name_plural = _('additional email addresses')
 
 class PhoneNumber(AbstractPhoneNumber):
     publish = models.BooleanField(_('publish'), default=False)

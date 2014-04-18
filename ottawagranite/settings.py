@@ -23,9 +23,7 @@ DATABASES = {
     }
 
 # The model to use for additional user data.
-AUTH_PROFILE_MODEL = 'membership.Member'
-
-SOUTH_DATABASE_ADAPTERS = {'default': 'south.db.postgresql_psycopg2'}  # http://stackoverflow.com/a/15286449/460877
+AUTH_USER_MODEL = 'membership.Member'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -155,7 +153,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'gunicorn',
-    'south',
     'curling',
     'finance',
     'membership',

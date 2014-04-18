@@ -1,10 +1,10 @@
 from django.contrib import admin
-from membership.models import ( Address, EmailAddress, PhoneNumber,
+from membership.models import ( Address, AdditionalEmailAddress, PhoneNumber,
                                 EmergencyContact, EmergencyContactPhoneNumber,
                                 Season, Membership, Locker, MembershipType )
 
 admin.site.register(Address)
-admin.site.register(EmailAddress)
+admin.site.register(AdditionalEmailAddress)
 admin.site.register(PhoneNumber)
 admin.site.register(EmergencyContact)
 admin.site.register(EmergencyContactPhoneNumber)
