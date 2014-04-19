@@ -7,3 +7,4 @@ class MemberForm(forms.ModelForm):
 
     class Meta:
         model = Member
+        fields = ['username', 'first_name', 'last_name', 'email']

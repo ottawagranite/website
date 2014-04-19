@@ -23,12 +23,12 @@ def manage_account(request):
         form = MemberForm(instance=request.user, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, "Account successfully update")
+            messages.success(request, "Account successfully updated")
             return HttpResponseRedirect(reverse('home'))
         
         else:
             log.warn("form is not valid: %s" % form.errors)
-            messages.warning(request, "Please fix the errors below")
+            messages.error(request, "Please fix the errors below")
 
     return render_to_response('account.html',
         RequestContext(request,
