@@ -4,6 +4,7 @@
 {% block content %}
 
 <form action="{% url 'membersession-manageaccount' %}" method="post">
+{% csrf_token %}
 <div class="row-fluid">
     <div class="span12">
         {{ form.non_field_errors }}
@@ -16,6 +17,7 @@
     </div>
     <div class="span9 left-justify">
         {{ user.username }}
+        <input type="hidden" name="username" value="{{ user.username }}" />
     </div>
 </div>
 <div class="row-fluid">
@@ -42,15 +44,6 @@
     </div>
 </div>
 <!-- spacer -->
-<div class="row-fluid">
-    <div class="span1"></div>
-    <div class="span2 right-justify shaded-background">
-        Password:
-    </div>
-    <div class="span9 left-justify">
-        {{ form.password }}
-    </div>
-</div>
 <div class="row-fluid">
     <div class="span1"></div>
     <div class="span2 right-justify shaded-background">

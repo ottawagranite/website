@@ -27,6 +27,7 @@ def manage_account(request):
             return HttpResponseRedirect(reverse('home'))
         
         else:
+            log.warn("form is not valid: %s" % form.errors)
             messages.warning(request, "Please fix the errors below")
 
     return render_to_response('account.html',

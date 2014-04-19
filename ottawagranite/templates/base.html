@@ -77,6 +77,7 @@
                         <a id="drop1" href="#" role="button" class="button-like dropdown-toggle" data-toggle="dropdown">My account</a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'membersession-manageaccount' %}">Manage my account</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'membersession-changepassword' %}">Change my password</a></li>
                             <li class="divider"></li>
                             <li role="presentation" style="500px;">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="performLogout('{% url 'membersession-logout' %}')">Logout {{ user }}</a></li>

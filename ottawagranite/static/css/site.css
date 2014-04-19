@@ -56,9 +56,9 @@ body {
 }
 
 .shaded-background {
-    /* background: #00447C; */
-    background: lightgray;
-    color: black;
+    background: #006633;
+    /* background: lightgray; */
+    color: white;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
