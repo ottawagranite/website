@@ -5,6 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 import dj_database_url
 import os
+from django.contrib import messages
 
 projdir = os.path.abspath(os.path.dirname(__file__))
 PROJDIR = projdir
@@ -96,6 +97,15 @@ STATIC_URL = '/static/'
 # For the curling app.
 CURLING_REQUIRE_GENDER = True
 
+# Custom message tags.
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert',
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-error'
+    }
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(projdir, "static"),
@@ -143,6 +153,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
     'ottawagranite.common.base_processor'
 )
 

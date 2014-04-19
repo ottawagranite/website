@@ -5,6 +5,8 @@ import logging, json
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from membersession.forms import MemberForm
+from django.contrib import messages
+from django.core.urlresolvers import reverse
 
 log = logging.getLogger(__name__)
 
@@ -12,12 +14,20 @@ log = logging.getLogger(__name__)
 def manage_account(request):
     """Manage your account settings."""
     log.info("in membersession.views.manageaccount")
-    form = MemberForm()
     if request.method == 'GET':
         log.debug('GET request')
+        form = MemberForm(instance=request.user)
 
     elif request.method == 'POST':
         log.debug('POST request')
+        form = MemberForm(instance=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Account successfully update")
+            return HttpResponseRedirect(reverse('home'))
+        
+        else:
+            messages.warning(request, "Please fix the errors below")
 
     return render_to_response('account.html',
         RequestContext(request,
