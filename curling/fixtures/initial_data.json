@@ -1,0 +1,20 @@
+[
+    {
+        "fields": {
+            "format": "Open Fixed", 
+            "name": "Weekend Mixed", 
+            "teams": []
+        }, 
+        "model": "curling.league", 
+        "pk": 1
+    }, 
+    {
+        "fields": {
+            "format": "Men's Draw", 
+            "name": "Evening Men's Draw", 
+            "teams": []
+        }, 
+        "model": "curling.league", 
+        "pk": 2
+    }
+]

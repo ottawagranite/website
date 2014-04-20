@@ -13,11 +13,29 @@ from django.conf import settings
 
 # Teams
 class Player(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('user'), blank=True, null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                verbose_name=_('user'),
+                                related_name='player',
+                                blank=True,
+                                null=True)
     first_name = models.CharField(_('first name'), max_length=100, blank=True)
     last_name = models.CharField(_('last name'), max_length=100, blank=True)
-    gender = models.CharField(_('gender'), max_length=1, choices=PLAYER_GENDER_CHOICES)
+    gender = models.CharField(_('gender'), max_length=32, choices=PLAYER_GENDER_CHOICES)
     jersey = models.CharField(_('jersey'), max_length=100, blank=True)
+
+    def get_leagues(self):
+        leagues = []
+        for teamplayer in self.teamplayers.all():
+            leagues.append(teamplayer.league)
+
+        return leagues
+
+    def in_league(self, league):
+        """Test if player is in a particular league."""
+        for teamplayer in self.teamplayers.all():
+            if teamplayer.league.name == league.name:
+                return True
+        return False
 
     def __unicode__(self):
         if self.first_name and self.last_name:
@@ -42,15 +60,6 @@ class Team(models.Model):
 
     def games(self):
         return Game.objects.filter(Q(team_a=self) | Q(team_b=self))
-
-
-class TeamPlayer(models.Model):
-    team = models.ForeignKey(Team, verbose_name=_('team'))
-    position = models.CharField(_('position'), max_length=50, choices=POSITION_CHOICES)
-    player = models.ForeignKey(Player, verbose_name=_('player'))
-
-    def __unicode__(self):
-        return u'%s %s %s' % (self.team, self.position, self.player)
 
 
 # Clubs
@@ -96,9 +105,13 @@ class Rock(models.Model):
 
 # League
 class League(models.Model):
-    name = models.CharField(_('name'), max_length=100)
-    teams = models.ManyToManyField(Team, verbose_name=_('team'), related_name='league')
-    format = models.CharField(_('format'), max_length=10, choices=LEAGUE_FORMAT_CHOICES)
+    name = models.CharField(_('name'), max_length=100, unique=True)
+    teams = models.ManyToManyField(Team,
+                                   verbose_name=_('teams'),
+                                   related_name='league',
+                                   null=True,
+                                   blank=True)
+    format = models.CharField(_('format'), max_length=32, choices=LEAGUE_FORMAT_CHOICES)
 
     def validate(self):
         for validator in league_formats[self.format]['team_validators']:
@@ -106,7 +119,23 @@ class League(models.Model):
                 validator(team)
 
     def __unicode__(self):
-        return u'%s: %s' % (self.position, self.player)
+        return u'%s, Format: %s' % (self.name, self.format)
+
+class TeamPlayer(models.Model):
+    team = models.ForeignKey(Team,
+                             verbose_name=_('team'),
+                             null=True,
+                             blank=True)
+    position = models.CharField(_('position'), max_length=50, choices=POSITION_CHOICES)
+    player = models.ForeignKey(Player,
+                               verbose_name=_('player'),
+                               related_name='teamplayers')
+    league = models.ForeignKey(League,
+                               verbose_name=_('league'),
+                               related_name='waitinglist')
+
+    def __unicode__(self):
+        return u'%s %s %s' % (self.team if self.team else None, self.position, self.player)
 
 
 # Games

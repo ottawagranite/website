@@ -73,6 +73,47 @@
 </div>
 <div class="row-fluid">
     <div class="span1"></div>
+    <div class="span2 right-justify shaded-background">
+        Gender:
+    </div>
+    <div class="span9 left-justify">
+        {{ form.gender }}
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span1"></div>
+    <div class="span2 right-justify shaded-background">
+        League membership:
+    </div>
+    <div class="span9 left-justify">
+        <table class="leaguetable">
+            <tr>
+                <th>Member</th>
+                <th>League</th>
+            </tr>
+        {% for league in all_leagues %}
+            <tr>
+                <td><input type="checkbox"
+                           name="league-{{ league.name }}"
+                           {% if league.name in user_league_names %}
+                           checked
+                           {% endif %}
+                           /></td>
+                <td>{{ league }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+<!-- a spacer -->
+<div class="row-fluid">
+    <div class="span12">
+    </div>
+</div>
+<!-- spacer -->
+<!-- The save button. -->
+<div class="row-fluid">
+    <div class="span1"></div>
     <div class="span2">
     </div>
     <div class="span9 left-justify">

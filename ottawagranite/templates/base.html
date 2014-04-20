@@ -80,7 +80,7 @@
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'membersession-changepassword' %}">Change my password</a></li>
                             <li class="divider"></li>
                             <li role="presentation" style="500px;">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="performLogout('{% url 'membersession-logout' %}')">Logout {{ user }}</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-click="performLogout('{% url 'membersession-logout' %}')">Logout {{ user.username }}</a></li>
                             </li>
                         </ul>
                     </li>

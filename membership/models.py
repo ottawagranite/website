@@ -48,7 +48,7 @@ class Member(AbstractUser):
     objects = UserManager()
     
     salutation = models.CharField(_('salutation'), max_length=100, choices=choices.SALUTATION_CHOICES, blank=True)
-    gender = models.CharField(_('gender'), max_length=100, choices=choices.GENDER_CHOICES, blank=True)
+    gender = models.CharField(_('gender'), max_length=32, choices=choices.GENDER_CHOICES, blank=True)
 
     date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
     comments = models.TextField(_('comments'), blank=True, default='')

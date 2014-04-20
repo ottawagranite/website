@@ -68,3 +68,10 @@ body {
     font-size: 0.5em;
     font-style: italic;
 }
+
+table.leaguetable th,
+table.leaguetable td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
