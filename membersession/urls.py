@@ -1,20 +1,21 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 from django.conf import settings
 from django.contrib.auth.views import password_change
 from django.core.urlresolvers import reverse
 from django.utils.functional import lazy
+from membersession import views
 
 reverse_lazy = lazy(reverse, unicode)
 
-urlpatterns = patterns('membersession.views',
+urlpatterns = [
     url(r'^manageaccount/$',
-         'manage_account',
+         views.manage_account,
          name='membersession-manageaccount'),
     url(r'^logout/$',
-        'member_logout',
+        views.member_logout,
         name='membersession-logout'),
     url(r'^$',
-        'member_login',
+        views.member_login,
         name='membersession-login'),
     url(r'^changepassword/$',
         password_change,
@@ -23,4 +24,4 @@ urlpatterns = patterns('membersession.views',
                 'post_change_redirect': reverse_lazy('home')
             },
         name='membersession-changepassword'),
-)
+]

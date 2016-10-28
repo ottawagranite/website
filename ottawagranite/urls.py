@@ -1,11 +1,13 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url, include
 from django.conf import settings
+from django.views import static
 import os
 from django.contrib.auth import get_user_model
 from registration.forms import RegistrationForm
 from django.views.generic.base import TemplateView
 from registration.backends.default.views import ActivationView, RegistrationView
 from django import forms
+from ottawagranite import views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -17,6 +19,7 @@ projdir = settings.PROJDIR
 class GraniteRegistrationForm(RegistrationForm):
     class Meta:
         model = get_user_model()
+        fields = ['username', 'password']
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -26,15 +29,15 @@ class GraniteRegistrationForm(RegistrationForm):
             return username
         raise forms.ValidationError(self.error_messages['duplicate_username'])
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'leagues/$',
-        'ottawagranite.views.leagues_landing_page',
+        views.leagues_landing_page,
         name='leagues-landing-page'),
     url(r'membership/life_members/$',
-        'ottawagranite.views.life_members',
+        views.life_members,
         name='life-members'),
-    url(r'info/about/$', 'ottawagranite.views.about', name="about"),
-    url(r'^$', 'ottawagranite.views.home', name='home'),
+    url(r'info/about/$', views.about, name="about"),
+    url(r'^$', views.home, name='home'),
 
     url(r'^admin/', include(admin.site.urls)),
 
@@ -62,6 +65,6 @@ urlpatterns = patterns('',
 
     # Serve static content
     url(r'^static/(?P<path>.*)',
-        'django.views.static.serve',
+        static.serve,
         { 'document_root': settings.STATIC_ROOT })
-)
+]

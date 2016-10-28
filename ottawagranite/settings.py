@@ -12,7 +12,6 @@ PROJDIR = projdir
 
 ADMINS = (
     ('Michael Soulier', 'msoulier@digitaltorque.ca'),
-    ('Paul Shannon', 'paul@paulshannon.ca')
 )
 
 MANAGERS = ADMINS
@@ -145,7 +144,7 @@ ROOT_URLCONF = 'ottawagranite.urls'
 WSGI_APPLICATION = 'ottawagranite.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(projdir, "templates")
+    os.path.join(projdir, "templates"),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -172,7 +171,6 @@ INSTALLED_APPS = (
     'membership',
     'membersession',
     'ottawagranite',
-    'gunicorn',
     'registration',
     'django_extensions'
 )
