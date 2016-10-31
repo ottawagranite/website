@@ -27,10 +27,6 @@ AUTH_USER_MODEL = 'membership.Member'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# For Django-registration
-ACCOUNT_ACTIVATION_DAYS = 1
-REGISTRATION_OPEN = True
-
 # If not logged-in and redirect required, send the user to the home page.
 LOGIN_URL = '/'
 
@@ -171,7 +167,6 @@ INSTALLED_APPS = (
     'membership',
     'membersession',
     'ottawagranite',
-    'registration',
     'django_extensions'
 )
 

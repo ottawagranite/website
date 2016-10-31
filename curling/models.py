@@ -109,7 +109,6 @@ class League(models.Model):
     teams = models.ManyToManyField(Team,
                                    verbose_name=_('teams'),
                                    related_name='league',
-                                   null=True,
                                    blank=True)
     format = models.CharField(_('format'), max_length=32, choices=LEAGUE_FORMAT_CHOICES)
 
