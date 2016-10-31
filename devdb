@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <create|drop|recreate>" 1>&2
-    exit 1
-fi
-
 id=$(id -u)
 userid=$(awk -F: '$3 == '"$id"'{print $1}' /etc/passwd)
 echo userid is $userid
@@ -33,6 +28,10 @@ drop() {
     dropdb ottawagranite
     dropuser ottawagranite_user
 }
+
+if [ "x$1" = "x" ]; then
+    exec psql -d ottawagranite
+fi
 
 case $1 in
     create)
